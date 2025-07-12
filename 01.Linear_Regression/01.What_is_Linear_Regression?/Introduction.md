@@ -52,7 +52,7 @@ The most common way to estimate the coefficients \( \beta \) is:
 1. 🔹 **Residual** for a point:
 
    $$
-   e_i = y_i - \hat{y}\_i
+   \text{e_i} = y_i - \hat{y}\_i
    $$
 
 2. 🔹 **Sum of Squared Residuals (SSR)**:
