@@ -1,45 +1,49 @@
 import numpy as np
 
-class LinearRegression:
+class LinearRegressionClosedForm:
     def __init__(self):
-        self.teta = None
-    
-    def fit(self , X , y):
-        if y.ndim == 1:
-            y = y.reshape(-1,1)
-        
-        X_b = np.hstack([np.ones((X.shape[0] , 1)) , X])
+        self.theta = None  # [weights..., bias]
 
-        self.teta = np.linalg.inv(X_b.T @ X_b).dot(X_b.T).dot(y)
-    
-    def predict(self ,X):
-        if self.teta is None:
-            raise Exception("Model is not trained yet")
-        
-         
-        X_b = np.hstack([np.ones((X.shape[0] , 1)) , X])
+    def fit(self, X, y):
+        """
+        Fits the model using the Normal Equation (no gradient descent).
+        """
+        # Add a column of 1s to X for the intercept (bias)
+        ones = np.ones((X.shape[0], 1))
+        X_b = np.hstack((ones, X))  # shape: (n_samples, n_features + 1)
 
-        return X_b @ self.teta
+        # Closed-form solution (Normal Equation)
+        XTX = X_b.T.dot(X_b)
+        XTy = X_b.T.dot(y)
+        self.theta = np.linalg.inv(XTX).dot(XTy)
 
-    def get_params(self):
+    def predict(self, X):
+        """
+        Predicts output using learned parameters.
+        """
+        ones = np.ones((X.shape[0], 1))
+        X_b = np.hstack((ones, X))
+        return X_b.dot(self.theta)
 
-        return self.teta
+    def score(self, X, y):
+        """
+        Computes the R² score.
+        """
+        y_pred = self.predict(X)
+        ss_total = np.sum((y - np.mean(y)) ** 2)
+        ss_res = np.sum((y - y_pred) ** 2)
+        return 1 - (ss_res / ss_total)
 
-# Sample training data
-X = np.array([[1], [2], [3], [4], [5]])
-y = np.array([2, 4, 6, 8, 10])
+if __name__ == "__main__":
+    # Data: y = 2x + 1
+    X = np.array([[1], [2], [3], [4], [5]])
+    y = np.array([3, 5, 7, 9, 11])
 
-# Create and train the model
-model = LinearRegression()
-model.fit(X, y)
+    model = LinearRegressionClosedForm()
+    model.fit(X, y)
 
-# Get learned parameters
-theta = model.get_params()
-print("Theta (parameters):", theta.ravel())
+    predictions = model.predict(X)
 
-# Make predictions
-preds = model.predict(X)
-print("Predictions:", preds.ravel())
-
-
-
+    print("Weights (slope):", model.theta[1:])
+    print("Bias (intercept):", model.theta[0])
+    print("R² score:", model.score(X, y))
