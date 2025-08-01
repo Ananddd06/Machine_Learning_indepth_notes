@@ -4,10 +4,10 @@
 
 ### 1. Linear Regression
 
-- Least Squares Derivation ✅
-- Normal Equation
-- Gradient Descent (GD, SGD, Mini-batch)
-- Convexity & Cost Surface
+- Least Squares Derivation ✅ 
+- Normal Equation ✅ - [θ= (X^T X)^−1 .(X^T)y]
+- Gradient Descent (GD, SGD, Mini-batch) ✅
+- Convexity & Cost Surface 
 - Regularization (Ridge & Lasso): L2 vs L1 penalty
 - Bias-Variance Tradeoff
 - Gauss-Markov Theorem
