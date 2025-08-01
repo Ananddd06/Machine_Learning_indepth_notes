@@ -4,7 +4,7 @@
 
 ### 1. Linear Regression
 
-- Least Squares Derivation [✅]
+- Least Squares Derivation ✅
 - Normal Equation
 - Gradient Descent (GD, SGD, Mini-batch)
 - Convexity & Cost Surface
