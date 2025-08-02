@@ -62,6 +62,113 @@ This document categorizes all major foundational models across:
 
 ---
 
+# 🧠 Annotated Deep Learning Paper Implementations: NLP + LLM Study Guide
+
+This guide is based on the [LabML Annotated Deep Learning Paper Implementations](https://github.com/labmlai/annotated_deep_learning_paper_implementations) repository. It summarizes all the relevant topics you should study to master **NLP** and **Large Language Models (LLMs)** using clean, annotated PyTorch code implementations.
+
+---
+
+## 📚 Topics to Study for NLP and LLMs
+
+### 🔹 Transformer Architecture & Variants
+
+- [ ] Multi‑Head Attention
+- [ ] Transformer Building Blocks
+- [ ] Transformer‑XL
+- [ ] Relative Multi‑Head Attention
+- [ ] Rotary Positional Embeddings (RoPE)
+- [ ] ALiBi (Attention with Linear Biases)
+- [ ] Compressive Transformer
+- [ ] Feedback Transformer
+- [ ] Switch Transformer
+- [ ] Fast Weights Transformer
+- [ ] FNet
+- [ ] Attention‑Free Transformer
+
+### 🔹 LLM Frameworks & Techniques
+
+- [ ] GPT Architecture Implementation
+- [ ] kNN‑LM (Language Modeling through Memorization)
+- [ ] Primer EZ
+- [ ] LoRA (Low‑Rank Adaptation Modules)
+- [ ] GPT‑NeoX Training and Fine-Tuning
+
+### 🔹 Sampling and Inference Methods
+
+- [ ] Greedy Sampling
+- [ ] Temperature-Based Sampling
+- [ ] Top‑k Sampling
+- [ ] Nucleus (Top‑p) Sampling
+
+### 🔹 Training and Scaling Enhancements
+
+- [ ] Zero3 Memory Optimization for Large Model Training
+- [ ] DeepNorm for Stabilizing Very Deep Transformers
+
+### 🔹 Normalization Layers in NLP Context
+
+- [ ] Layer Normalization
+- [ ] DeepNorm
+
+### 🔹 Optimizers Used in NLP Training
+
+- [ ] Adam
+- [ ] AMSGrad
+- [ ] AdaBelief
+- [ ] Sophia‑G
+- [ ] Noam Optimizer
+
+---
+
+## ✅ Essential Topics to Prioritize
+
+### ✅ Must-Learn
+
+- Transformer Block Basics → Multi‑Head Attention → GPT Architecture
+- Token Sampling Strategies (Greedy / Top-k / Nucleus)
+- LoRA Implementation and Theory
+- LayerNorm + DeepNorm
+- Adam Optimizer and Variants
+
+### 🔄 Very Valuable
+
+- Transformer Variants like XL, Switch, Feedback
+- kNN-LM and Memory-Augmented Models
+- Compressive Transformer
+- Zero3 Optimization
+
+### 🌱 Nice-to-Know
+
+- Primer‑EZ, FNet, Attention-Free Transformers
+- Adaptive Computation Modules like PonderNet
+
+---
+
+## 🔁 Suggested Study Flow
+
+1. **Transformer Basics** → Multi‑Head Attention → GPT
+2. **Token Sampling** (Greedy, Top-k, Nucleus, Temperature)
+3. **LoRA Fine-Tuning**
+4. **Transformer Variants** (XL, Switch, Feedback)
+5. **Zero3 & DeepNorm** for Stability + Memory
+6. **Optional Extras** (FNet, PonderNet, Memory-Augmented, etc.)
+
+---
+
+## 🌐 Useful Links
+
+- 🔗 [GitHub Repo](https://github.com/labmlai/annotated_deep_learning_paper_implementations)
+- 🔗 [Annotated Transformer Index](https://nn.labml.ai/transformers/index.html)
+- 🔗 [Sampling Notebook](https://nn.labml.ai/sampling/index.html)
+
+---
+
+> 💡 **Tip:** Walk through the notebooks line by line, match paper equations to code, and re-implement parts using your own datasets to build real understanding.
+
+---
+
+Would you like this as a downloadable `.md` file?
+
 ## 📌 Summary of Categories
 
 | Category            | Model Families                                       |
