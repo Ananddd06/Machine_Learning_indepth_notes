@@ -10,6 +10,7 @@
 - Convexity & Cost Surface ✅
 - Regularization (Ridge & Lasso): L2 vs L1 penalty ✅
 - Bias-Variance Tradeoff ✅
+- Optimisation Algorithms ✅
 - Gauss-Markov Theorem
 - Maximum Likelihood Estimation (MLE)
 
