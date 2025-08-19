@@ -1,136 +1,156 @@
 # Gaussian Discriminant Analysis (GDA) vs Logistic Regression
 
-This document provides a detailed comparison of **GDA** and **Logistic Regression**, focusing on assumptions, decision boundaries, parameter estimation, and use cases.
+## 1. Introduction
+
+Both **Logistic Regression** and **Gaussian Discriminant Analysis (GDA)** are popular algorithms for **binary classification** (e.g., spam vs. ham).
+
+- Logistic Regression is **discriminative** (models $P(y|x)$ directly).
+- GDA is **generative** (models $P(x|y)$ and $P(y)$, then applies Bayes’ rule).
 
 ---
 
-## 1. Model Type
+## 2. Logistic Regression
 
-- **Logistic Regression (LR)**:  
-  Discriminative model.  
-  Directly models the conditional probability:
+### Model Assumption
 
-  $$
-  P(y|x; \theta)
-  $$
+We assume the probability of class $y \in \{0,1\}$ given input $x$ follows a **sigmoid function**:
 
-- **Gaussian Discriminant Analysis (GDA)**:  
-  Generative model.  
-  Models the joint distribution of $(x, y)$ and then applies Bayes' rule:
+\[
+P(y=1 \mid x; \theta) = \sigma(\theta^T x) = \frac{1}{1 + e^{-\theta^T x}}
+\]
 
-  $$
-  P(y|x) = \frac{P(x|y) \, P(y)}{P(x)}
-  $$
+\[
+P(y=0 \mid x; \theta) = 1 - P(y=1 \mid x; \theta)
+\]
 
 ---
 
-## 2. Assumptions
+### Decision Boundary
 
-- **Logistic Regression**:  
-  Makes **no assumption** about the distribution of $x$.
+The decision rule is:
 
-- **GDA**:  
-  Assumes **Gaussian distribution** for features conditioned on class:
-
-  $$
-  x \mid y=0 \sim \mathcal{N}(\mu_0, \Sigma)
-  $$
-
-  $$
-  x \mid y=1 \sim \mathcal{N}(\mu_1, \Sigma)
-  $$
+\[
+\hat{y} =
+\begin{cases}
+1 & \text{if } \theta^T x \geq 0 \\
+0 & \text{otherwise}
+\end{cases}
+\]
 
 ---
 
-## 3. Decision Boundary
+### Training (Maximum Likelihood Estimation)
 
-- **Logistic Regression**:  
-  Always produces a **linear decision boundary**:
+We maximize the log-likelihood:
 
-  $$
-  P(y=1 \mid x) = \frac{1}{1 + e^{-\theta^T x}}
-  $$
+\[
+\ell(\theta) = \sum\_{i=1}^{m} \Big[ y^{(i)} \log P(y^{(i)} \mid x^{(i)}; \theta) + (1-y^{(i)}) \log (1 - P(y^{(i)} \mid x^{(i)}; \theta)) \Big]
+\]
 
-- **GDA**:
-  - If covariance matrices are **equal** ($\Sigma_0 = \Sigma_1$): boundary is **linear**.
-  - If covariance matrices are **different** ($\Sigma_0 \neq \Sigma_1$): boundary is **quadratic**.
+Parameters $\theta$ are optimized via **gradient descent** (or variants like Adam, RMSProp, etc.).
 
 ---
 
-## 4. Parameter Estimation
+## 3. Gaussian Discriminant Analysis (GDA)
 
-- **Logistic Regression**:  
-  Parameters are estimated using **Maximum Likelihood Estimation (MLE)**.  
-  Requires iterative optimization methods such as:
+### Model Assumptions
 
-  - Gradient Descent
-  - Newton’s Method
+1. Prior:
+   \[
+   P(y=1) = \phi, \quad P(y=0) = 1 - \phi
+   \]
 
-- **GDA**:  
-  Parameters are estimated in **closed form**:
+2. Conditional distribution of features given label:
+   \[
+   x \mid y=0 \sim \mathcal{N}(\mu_0, \Sigma), \quad
+   x \mid y=1 \sim \mathcal{N}(\mu_1, \Sigma)
+   \]
 
-  - Prior (class probability):
-
-    $$
-    \phi = \frac{1}{m} \sum_{i=1}^m 1\{ y^{(i)} = 1 \}
-    $$
-
-  - Class means:
-
-    $$
-    \mu_k = \frac{\sum_{i=1}^m 1\{ y^{(i)} = k \} \, x^{(i)}}{\sum_{i=1}^m 1\{ y^{(i)} = k \}}
-    $$
-
-  - Shared covariance matrix:
-
-    $$
-    \Sigma = \frac{1}{m} \sum_{i=1}^m \big( x^{(i)} - \mu_{y^{(i)}} \big) \big( x^{(i)} - \mu_{y^{(i)}} \big)^T
-    $$
+   - $\mu_0, \mu_1$ are class means
+   - $\Sigma$ is the shared covariance matrix
 
 ---
 
-## 5. Advantages & Disadvantages
+### Posterior via Bayes’ Rule
 
-### Logistic Regression
-
-✅ Robust to model misspecification (no strong distribution assumptions).  
-✅ Always gives a linear boundary → efficient for high dimensions.  
-❌ Requires iterative optimization (no closed-form solution).
-
-### GDA
-
-✅ If Gaussian assumption holds → more **statistically efficient** (needs less data).  
-✅ Closed-form parameter estimation.  
-✅ Can capture quadratic boundaries (if $\Sigma_0 \neq \Sigma_1$).  
-❌ If Gaussian assumption is violated → performs poorly.
+\[
+P(y=1 \mid x) = \frac{P(x \mid y=1) P(y=1)}{P(x \mid y=0) P(y=0) + P(x \mid y=1) P(y=1)}
+\]
 
 ---
 
-## 6. When to Use Which?
+### Decision Boundary
 
-- **Use Logistic Regression if**:
+The log-odds is **linear** in $x$:
 
-  - You don’t want to assume a distribution for $x$.
-  - Features are high-dimensional and sparse (e.g., text classification).
-  - You prefer robustness over data efficiency.
+\[
+\log \frac{P(y=1 \mid x)}{P(y=0 \mid x)} = \theta^T x + \theta_0
+\]
 
-- **Use GDA if**:
-  - Data is well-modeled by Gaussian distributions per class.
-  - You have limited training data (closed-form estimates are efficient).
-  - You need quadratic decision boundaries.
+Thus, like logistic regression, GDA also results in a **linear decision boundary** (when covariances are shared).
 
 ---
 
-## 7. Summary Table
+### Parameter Estimation (Closed-Form)
 
-| Aspect               | Logistic Regression               | GDA                                                                      |
-| -------------------- | --------------------------------- | ------------------------------------------------------------------------ |
-| Type                 | Discriminative                    | Generative                                                               |
-| Models               | $P(y \mid x)$                     | $P(x \mid y)$ and $P(y)$                                                 |
-| Distribution Assum.  | None                              | Gaussian                                                                 |
-| Decision Boundary    | Linear                            | Linear (if $\Sigma_0=\Sigma_1$), Quadratic (if $\Sigma_0 \neq \Sigma_1$) |
-| Parameter Estimation | Iterative (MLE + GD/Newton)       | Closed form                                                              |
-| Data Efficiency      | Less efficient if data is limited | More efficient if Gaussian assumption holds                              |
-| Robustness           | High                              | Low (sensitive to wrong distributional assumptions)                      |
+Parameters are estimated using **maximum likelihood** with closed-form solutions:
+
+\[
+\phi = \frac{1}{m} \sum\_{i=1}^m 1\{ y^{(i)} = 1 \}
+\]
+
+\[
+\mu*0 = \frac{\sum*{i=1}^m 1\{ y^{(i)}=0 \} x^{(i)}}{\sum\_{i=1}^m 1\{ y^{(i)}=0 \}}
+\]
+
+\[
+\mu*1 = \frac{\sum*{i=1}^m 1\{ y^{(i)}=1 \} x^{(i)}}{\sum\_{i=1}^m 1\{ y^{(i)}=1 \}}
+\]
+
+\[
+\Sigma = \frac{1}{m} \sum*{i=1}^m \big( x^{(i)} - \mu*{y^{(i)}} \big) \big( x^{(i)} - \mu\_{y^{(i)}} \big)^T
+\]
 
 ---
+
+## 4. Comparison
+
+| Aspect                   | Logistic Regression                        | Gaussian Discriminant Analysis                              |
+| ------------------------ | ------------------------------------------ | ----------------------------------------------------------- |
+| **Type**                 | Discriminative                             | Generative                                                  |
+| **What it models**       | $P(y \mid x)$                              | $P(x \mid y)$ and $P(y)$                                    |
+| **Assumptions**          | No distributional assumptions on $x$       | Features follow class-conditional Gaussian                  |
+| **Decision Boundary**    | Linear in features                         | Linear if shared $\Sigma$, quadratic if different $\Sigma$  |
+| **Parameter Estimation** | Gradient descent on log-likelihood         | Closed-form MLE (means, covariance, priors)                 |
+| **Data Requirement**     | Works well with large data                 | Works well with small data (uses distributional assumption) |
+| **Robustness**           | Robust to wrong distributional assumptions | Sensitive if Gaussian assumption is violated                |
+
+---
+
+## 5. Practical Guidelines
+
+- Use **Logistic Regression** when:
+
+  - You have **large labeled datasets**
+  - You do **not** want to assume Gaussian feature distributions
+  - Training speed & robustness are important
+
+- Use **GDA** when:
+  - You have **small datasets** (distributional assumption helps generalization)
+  - The features are approximately **Gaussian-distributed** within each class
+  - You want closed-form parameter estimates without iterative optimization
+
+---
+
+## 6. Example: Spam vs Ham Emails
+
+- **Logistic Regression**: Directly learns decision boundary between spam and ham from labeled data. Works well with large datasets and diverse feature distributions (e.g., word embeddings, TF-IDF).
+
+- **GDA**: Models distribution of words given spam vs ham separately (as Gaussians). Performs well if data really follows Gaussian-like clusters, but fails if distributions are highly skewed (e.g., sparse text features).
+
+---
+
+## 7. Key Takeaway
+
+- **Logistic Regression**: safer, more general-purpose, robust in real-world tasks.
+- **GDA**: powerful if Gaussian assumptions hold, especially with small data.
