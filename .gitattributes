@@ -1,1 +1,2 @@
 LeetCodeDatasetCSV/*.csv filter=lfs diff=lfs merge=lfs -text
+Dataset[[:space:]]for[[:space:]]practice/LeetCodeDatasetCSV/*.csv filter=lfs diff=lfs merge=lfs -text
