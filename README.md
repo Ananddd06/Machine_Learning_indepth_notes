@@ -71,3 +71,57 @@ Machine_Learning_Indepth_Notes/
 │       └── paper.pdf
 ├── README.md
 └── LICENSE
+```
+
+# 📖 Research Papers
+
+Every algorithm includes its foundational research paper 📄.  
+Examples:  
+- `supervised/linear_regression/paper.pdf` → Linear Regression theory  
+- `unsupervised/kmeans/paper.pdf` → K-Means original paper  
+
+This way, you can connect **code ↔ theory** easily.  
+
+---
+
+## 💻 How to Use
+
+Clone the repo and dive in!  
+```bash
+git clone https://github.com/Ananddd06/Machine_Learning_indepth_notes.git
+cd Machine_Learning_indepth_notes
+```
+
+To run any program
+```bash
+cd supervised/linear_regression
+python linear_regression.py
+```
+👉 Make sure you install dependencies first:
+
+```bash
+pip install -r requirements.txt
+
+```
+
+## 🤝 Contribute
+
+We 💙 contributions! You can:
+- ➕ Add new algorithms  
+- 📓 Improve Jupyter notebooks with visualizations  
+- 📄 Upload missing research papers  
+- 🛠 Refactor / optimize existing code  
+- ✨ Suggest new features  
+
+### Steps to contribute:
+1. 🍴 Fork this repo  
+2. 🌿 Create a branch (e.g., `add/naive_bayes`)  
+3. 💾 Commit changes  
+4. 📬 Open a Pull Request  
+
+### 🚀 Future Roadmap
+- Supervised Learning algorithms
+- Unsupervised Learning algorithms
+- NLP implementations (from scratch) 📝
+- Deep Learning basics 🧠
+- Transformers ⚡
