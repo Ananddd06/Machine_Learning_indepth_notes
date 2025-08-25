@@ -125,3 +125,13 @@ We 💙 contributions! You can:
 - NLP implementations (from scratch) 📝
 - Deep Learning basics 🧠
 - Transformers ⚡
+
+#### ⭐ Star My Repo
+
+Hey there! 🙌
+
+If you find this project helpful, please **star ⭐ the repository** and keep learning 📚✨.
+
+With love ❤️,
+**Anand**
+
