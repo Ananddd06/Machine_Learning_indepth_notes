@@ -44,6 +44,11 @@ NLP, transformers, and LLMs**.
   alignment, safety.\
 - [Course Website](https://web.stanford.edu/class/cs324/)
 
+### 6. **CS336: Language Modeling from Scratch**
+
+- [Youtube Video](https://www.youtube.com/watch?v=msHyYioAyNE&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=3)
+- [Course website](https://stanford-cs336.github.io/spring2024/index.html)
+
 ---
 
 ## 🔹 MIT
