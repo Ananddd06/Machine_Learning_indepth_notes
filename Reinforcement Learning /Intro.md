@@ -54,6 +54,14 @@
 
 ---
 
+## Formulas
+
+$$
+    p _ { \mu } T ^ { S \rightarrow A V } = 2 m _ { \pi } T ^ { S \rightarrow \pi V }<|im_end|>
+$$
+
+---
+
 ## Recommendations
 
 - **Beginner:** Start with Stanford's CS234 for a structured introduction.
