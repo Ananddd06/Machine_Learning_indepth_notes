@@ -1,18 +1,20 @@
 # Machine Learning Algorithms: Supervised vs Unsupervised
 
-In **machine learning**, algorithms are broadly categorized as **Supervised** (labeled data) and **Unsupervised** (unlabeled data).  
+In **machine learning**, algorithms are broadly categorized as **Supervised** (labeled data) and **Unsupervised** (unlabeled data).
 
 ---
 
 ## 🔹 Supervised Learning Algorithms
-*(Input → Output mapping, trained with labels)*  
+
+_(Input → Output mapping, trained with labels)_
 
 ### 1. Regression Algorithms
-- Linear Regression
-- Polynomial Regression
-- Ridge Regression (L2 Regularization)
-- Lasso Regression (L1 Regularization)
-- Elastic Net Regression
+
+- Linear Regression ☑️
+- Polynomial Regression ☑️
+- Ridge Regression (L2 Regularization) ☑️
+- Lasso Regression (L1 Regularization) ☑️
+- Elastic Net Regression ☑️
 - Stepwise Regression
 - Bayesian Regression
 - Support Vector Regression (SVR)
@@ -23,14 +25,15 @@ In **machine learning**, algorithms are broadly categorized as **Supervised** (l
 - Neural Network Regression
 
 ### 2. Classification Algorithms
-- Logistic Regression
-- Naive Bayes (Gaussian, Multinomial, Bernoulli)
-- K-Nearest Neighbors (KNN)
+
+- Logistic Regression ☑️
+- Naive Bayes (Gaussian, Multinomial, Bernoulli) ☑️
+- K-Nearest Neighbors (KNN) ☑️
 - Decision Trees
 - Random Forest
-- Support Vector Machine (SVM)
+- Support Vector Machine (SVM) ☑️
 - Gradient Boosting Classifiers (XGBoost, LightGBM, CatBoost)
-- Stochastic Gradient Descent Classifier (SGDClassifier)
+- Stochastic Gradient Descent Classifier (SGDClassifier) ☑️
 - Neural Networks / Deep Learning (MLPs, CNNs, RNNs, Transformers for classification)
 - Quadratic Discriminant Analysis (QDA)
 - Linear Discriminant Analysis (LDA)
@@ -38,9 +41,11 @@ In **machine learning**, algorithms are broadly categorized as **Supervised** (l
 ---
 
 ## 🔹 Unsupervised Learning Algorithms
-*(Discover hidden structure without labels)*  
+
+_(Discover hidden structure without labels)_
 
 ### 1. Clustering Algorithms
+
 - K-Means Clustering
 - K-Medoids (PAM)
 - Hierarchical Clustering (Agglomerative, Divisive)
@@ -53,6 +58,7 @@ In **machine learning**, algorithms are broadly categorized as **Supervised** (l
 - BIRCH (Balanced Iterative Reducing and Clustering using Hierarchies)
 
 ### 2. Dimensionality Reduction / Representation Learning
+
 - Principal Component Analysis (PCA)
 - Kernel PCA
 - t-SNE (t-distributed Stochastic Neighbor Embedding)
@@ -63,11 +69,13 @@ In **machine learning**, algorithms are broadly categorized as **Supervised** (l
 - Non-negative Matrix Factorization (NMF)
 
 ### 3. Association Rule Learning
+
 - Apriori Algorithm
 - Eclat Algorithm
 - FP-Growth (Frequent Pattern Growth)
 
 ### 4. Anomaly Detection (Unsupervised)
+
 - Isolation Forest
 - One-Class SVM
 - Local Outlier Factor (LOF)
@@ -75,6 +83,7 @@ In **machine learning**, algorithms are broadly categorized as **Supervised** (l
 
 ---
 
-✅ **Summary**  
-- **Supervised → Regression + Classification**  
-- **Unsupervised → Clustering + Dimensionality Reduction + Association + Anomaly Detection**  
+✅ **Summary**
+
+- **Supervised → Regression + Classification**
+- **Unsupervised → Clustering + Dimensionality Reduction + Association + Anomaly Detection**
